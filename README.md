@@ -1,8 +1,14 @@
-# React + Vite
+# nfl_draft-dashboard v2
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+react + d3 + supabase
 
-Currently, two official plugins are available:
+[App link](https://dmalary.github.io/nfl_draft-dashboard/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### commands
+- install: npm i
+- run: npm run dev
+- build: npm run build
+- deploy: npm run deploy
+
+### convert data
+https://tableconvert.com/json-to-excel
