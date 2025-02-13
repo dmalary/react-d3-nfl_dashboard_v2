@@ -41,11 +41,12 @@ function App() {
         {loading && <p>Loading players...</p>}
         {error && <p>Error: {error}</p>}
         {!loading && !error && (
-          <ul>
-            {players.map((player) => (
-              <li key={player.key}>{player.playerName}</li>
-            ))}
-          </ul>
+          players.length
+          // <ul>
+          //   {players.map((player) => (
+          //     <li key={player.key}>{player.playerName}</li>
+          //   ))}
+          // </ul>
         )}
       </div>
     </>

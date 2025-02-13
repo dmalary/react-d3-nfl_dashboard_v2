@@ -2,7 +2,7 @@
 
 react + d3 + supabase
 
-[App link](https://dmalary.github.io/nfl_draft-dashboard/)
+[App link]()
 
 ### commands
 - install: npm i
