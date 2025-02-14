@@ -9,16 +9,18 @@ import { glKey } from '../config';
 
 const MapLayer = () => {
   return (
-    <div className="h-30 w-30">
+    // <div className="h-80 w-80">
+    <div >
       <Map
       mapboxAccessToken={glKey}
       initialViewState={{
-        longitude: -122.4,
-        latitude: 37.8,
-        zoom: 14
+        longitude: -87.6500523,
+        latitude: 41.850033,
+        zoom: 3
       }}
-      style={{width: 600, height: 400}}
-      mapStyle="mapbox://styles/mapbox/streets-v9"
+      style={{width: 800, height: 600}}
+      mapStyle="mapbox://styles/mapbox/dark-v11"
+      // mapStyle="mapbox://styles/mapbox/streets-v9"
     />
 
     </div>
