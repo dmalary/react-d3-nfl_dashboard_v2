@@ -22,8 +22,8 @@ const MapLayer = ({mapData}) => {
         'interpolate',
         ['linear'],
         ['get', 'position_count'],
-        1, 4,   // Min position_count -> small radius
-        10, 30  // Max position_count -> larger radius
+        1, 3.5,   // Min position_count -> small radius
+        10, 40  // Max position_count -> larger radius
       ],
       'circle-color': '#007cbf'
     }
