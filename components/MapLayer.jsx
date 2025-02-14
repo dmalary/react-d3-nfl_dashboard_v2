@@ -14,15 +14,6 @@ const MapLayer = ({mapData}) => {
     zoom: 3.25
   });
 
-  // const layerStyle = {
-  //   id: 'point',
-  //   type: 'circle',
-  //   paint: {
-  //     'circle-radius': 3,
-  //     'circle-color': '#007cbf'
-  //   }
-  // };
-
   const layerStyle = {
     id: 'point',
     type: 'circle',
