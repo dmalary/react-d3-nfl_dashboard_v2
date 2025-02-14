@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 
-const Dropdown = ({ data, onSelect }) => {
+const Dropdown = ({ data, onSelect, title }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -33,7 +33,7 @@ const Dropdown = ({ data, onSelect }) => {
         className="font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
         type="button"
       >
-        Teams
+        {title}
         <svg
           className="w-2.5 h-2.5 ms-3"
           aria-hidden="true"
