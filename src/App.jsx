@@ -7,13 +7,14 @@ import { supaKey } from '../config';
 
 // import CurvedRankAxis from "../components/CurvedRankAxis";
 import Dropdown from '../components/Dropdown'
+import MapLayer from '../components/MapLayer'
 
 const supabase = createClient("https://vvlkqpqsfrexqrqcoiha.supabase.co", supaKey);
 
 function App() {
   const [players, setPlayers] = useState([]);
   const [teams, setTeams] = useState([]);
-  const [loading, setLoading] = useState(true); 
+  // const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(null); 
 
   const [selectTeam, setSelectTeam] = useState(null);
@@ -26,7 +27,7 @@ function App() {
   // db call
   async function getPlayers() {
     try {
-      setLoading(true); // Start loading
+      // setLoading(true); // Start loading
       const { data, error } = await supabase.from("nfl_draft").select();
 
       if (error) throw error; 
@@ -36,13 +37,13 @@ function App() {
       setError(err.message); 
 
     } finally {
-      setLoading(false); // Stop loading
+      // setLoading(false); // Stop loading
     }
   }
 
   async function getTeams() {
     try {
-      setLoading(true); // Start loading
+      // setLoading(true); // Start loading
       const { data, error } = await supabase.from("draft_teams").select();
 
       if (error) throw error; 
@@ -52,32 +53,27 @@ function App() {
       setError(err.message); 
 
     } finally {
-      setLoading(false); // Stop loading
+      // setLoading(false); // Stop loading
     }
   }
   
-  console.log('players', players);
-  console.log('teams', teams);
-  console.log('selectTeam', selectTeam)
+  // console.log('players', players);
+  // console.log('teams', teams);
+  // console.log('selectTeam', selectTeam)
   
   return (
     <>
-      <div>
-        {loading && <p>Loading players...</p>}
-        {error && <p>Error: {error}</p>}
-        {!loading && !error && (
-          players.length
-          // <ul>
-          //   {players.map((player) => (
-          //     <li key={player.key}>{player.playerName}</li>
-          //   ))}
-          // </ul>
-        )}
-      </div>
-
       {/* <CurvedRankAxis data={rankedData} />; */}
 
-      <Dropdown data={teams} onSelect={setSelectTeam} />
+      {/* <div>
+            <Dropdown data={teams} onSelect={setSelectTeam} />
+      </div> */}
+
+      <div>
+        <MapLayer />
+      </div>
+
+      {/* setup map of position feeder schools */}
     </>
   )
 }
