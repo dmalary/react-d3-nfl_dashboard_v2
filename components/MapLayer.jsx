@@ -2,34 +2,45 @@
 
 import { useState } from 'react';
 
-import Map from 'react-map-gl/mapbox';
+import Map, {Source, Layer} from 'react-map-gl/mapbox';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 import { glKey } from '../config';
 
-const MapLayer = () => {
+const MapLayer = ({mapData}) => {
   const [viewState, setViewState] = useState({
     longitude: -100,
     latitude: 40,
-    zoom: 3.5
+    zoom: 3.25
   });
+
+  const layerStyle = {
+    id: 'point',
+    type: 'circle',
+    paint: {
+      'circle-radius': 3,
+      'circle-color': '#007cbf'
+    }
+  };
 
   return (
     <div >
       <Map
-      mapboxAccessToken={glKey}
-      // initialViewState={{
-      //   longitude: -87.6500523,
-      //   latitude: 41.850033,
-      //   zoom: 3.5
-      // }}
-      {...viewState}
-      onMove={evt => setViewState(evt.viewState)}
-      style={{width: 800, height: 600}}
-      mapStyle="mapbox://styles/mapbox/dark-v11"
-      // mapStyle="mapbox://styles/mapbox/streets-v9"
-    />
-
+        mapboxAccessToken={glKey}
+        // initialViewState={{
+        //   longitude: -87.6500523,
+        //   latitude: 41.850033,
+        //   zoom: 3.5
+        // }}
+        {...viewState}
+        onMove={evt => setViewState(evt.viewState)}
+        style={{width: 800, height: 600}}
+        mapStyle="mapbox://styles/mapbox/dark-v11"
+      >
+        <Source id="my-data" type="geojson" data={mapData}>
+          <Layer {...layerStyle} />
+        </Source>
+      </Map>
     </div>
   );
 };
