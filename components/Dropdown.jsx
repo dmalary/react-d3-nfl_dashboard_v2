@@ -23,7 +23,7 @@ const Dropdown = ({ data, onSelect }) => {
     };
   }, []);
 
-  console.log('teamNames', teamNames)
+  // console.log('teamNames', teamNames)
 
   return (
     <div className="relative inline-block text-left" ref={dropdownRef}>
