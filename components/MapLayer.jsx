@@ -14,11 +14,26 @@ const MapLayer = ({mapData}) => {
     zoom: 3.25
   });
 
+  // const layerStyle = {
+  //   id: 'point',
+  //   type: 'circle',
+  //   paint: {
+  //     'circle-radius': 3,
+  //     'circle-color': '#007cbf'
+  //   }
+  // };
+
   const layerStyle = {
     id: 'point',
     type: 'circle',
     paint: {
-      'circle-radius': 3,
+      'circle-radius': [
+        'interpolate',
+        ['linear'],
+        ['get', 'position_count'],
+        1, 4,   // Min position_count -> small radius
+        10, 30  // Max position_count -> larger radius
+      ],
       'circle-color': '#007cbf'
     }
   };
