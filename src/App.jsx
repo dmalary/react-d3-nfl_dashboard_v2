@@ -92,20 +92,21 @@ function App() {
   }
 
   return (
-    <div className="mx-auto">
-      <div>
-        <h1>NFL Positional Feeder Schools</h1>
-        <p>With the NFL Draft approaching, explore where the league—and individual teams—tend to recruit players by position.</p>
-        <p>data from nfl-reference.com from 2000-2023</p>
-        <p><i>And don’t forget Hawaii!</i></p>
+    <div className="mx-auto text-left">
+      <div className="ml-5 pb-3 w-3/5">
+        <h1 className="py-3">The NFL’s College Talent Pipeline</h1>
+        <p className="py-2">With the NFL Draft approaching, explore which schools supply the most players at each position—both league-wide and for individual teams.</p>
+        <p className="py-2"><i>And don’t forget Hawaii!</i></p>
+        <p className="py-2">Data sourced from Pro Football Reference (2000–2023).</p>
       </div>
-      <div>
+      <hr className="title-divider h-0.5 my-5 border-0 rounded-sm bg-white"></hr>
+      <div className="text-center">
         <Dropdown data={teams} onSelect={setSelectedTeam} title={"Teams"} />
         <Dropdown data={positions} onSelect={setSelectedPosition} title={"Positions"} />
-      </div>
-      <div>
-        {selectedTeam && <p>Team: {selectedTeam}</p>}
-        {selectedPosition && <p>Position: {selectedPosition}</p>}
+        <div className="mx-auto py-3">
+          {selectedTeam && <p>Team: {selectedTeam}</p>}
+          {selectedPosition && <p>Position: {selectedPosition}</p>}
+        </div>
       </div>
       <div>
         <MapLayer mapData={geojsonData} />
