@@ -7,7 +7,7 @@ import Dropdown from "../components/Dropdown";
 import MapLayer from "../components/MapLayer";
 
 const supabase = createClient("https://vvlkqpqsfrexqrqcoiha.supabase.co", supaKey);
-const DEBUG = true; // Toggle this for debugging
+const DEBUG = false; // Toggle this for debugging
 
 function App() {
   const [error, setError] = useState(null);
@@ -96,6 +96,7 @@ function App() {
       <div>
         <h1>NFL Positional Feeder Schools</h1>
         <p>With the NFL Draft approaching, explore where the league—and individual teams—tend to recruit players by position.</p>
+        <p>data from nfl-reference.com from 2000-2023</p>
         <p><i>And don’t forget Hawaii!</i></p>
       </div>
       <div>

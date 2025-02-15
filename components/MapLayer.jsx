@@ -14,6 +14,11 @@ const MapLayer = ({mapData}) => {
     zoom: 3.25
   });
 
+  const positionCounts = mapData?.features.map(feature => feature.properties.position_count);
+
+  const minPositionCount = Math.min(...positionCounts);
+  const maxPositionCount = Math.max(...positionCounts);
+
   const layerStyle = {
     id: 'point',
     type: 'circle',
@@ -25,10 +30,26 @@ const MapLayer = ({mapData}) => {
         1, 3.5,   // Min position_count -> small radius
         10, 40  // Max position_count -> larger radius
       ],
-      'circle-color': '#007cbf'
+      // 'circle-color': '#f1c232'
+      'circle-color': [
+        'interpolate',
+        ['linear'],
+        ['get', 'position_count'],
+        // minPositionCount, '#12a4fd',
+        // (maxPositionCount + minPositionCount) / 2, '#f1c232',
+        // maxPositionCount, '#ec6060'
+        1, '#12a4fd',
+        2, '#f1c232',
+        3, '#ec6060'
+        // 1, '#009fb7',
+        // 2, '#fed766',
+        // 3, '#fe4a49'
+      ],
+      'circle-opacity': 0.8
     }
   };
 
+  // console.log('mapData', mapData)
   return (
     <div >
       <Map
