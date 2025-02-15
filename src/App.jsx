@@ -92,7 +92,7 @@ function App() {
   }
 
   return (
-    <>
+    <div className="mx-auto">
       <div>
         <h1>NFL Positional Feeder Schools</h1>
         <p>With the NFL Draft approaching, explore where the league—and individual teams—tend to recruit players by position.</p>
@@ -110,7 +110,7 @@ function App() {
       <div>
         <MapLayer mapData={geojsonData} />
       </div>
-    </>
+    </div>
   );
 }
 

@@ -14,10 +14,10 @@ const MapLayer = ({mapData}) => {
     zoom: 3.25
   });
 
-  const positionCounts = mapData?.features.map(feature => feature.properties.position_count);
+  // const positionCounts = mapData?.features.map(feature => feature.properties.position_count);
 
-  const minPositionCount = Math.min(...positionCounts);
-  const maxPositionCount = Math.max(...positionCounts);
+  // const minPositionCount = Math.min(...positionCounts);
+  // const maxPositionCount = Math.max(...positionCounts);
 
   const layerStyle = {
     id: 'point',
@@ -51,7 +51,7 @@ const MapLayer = ({mapData}) => {
 
   // console.log('mapData', mapData)
   return (
-    <div >
+    <div className='mx-auto flex justify-center'>
       <Map
         mapboxAccessToken={glKey}
         // initialViewState={{
