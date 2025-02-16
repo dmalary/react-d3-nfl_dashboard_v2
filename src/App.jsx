@@ -97,6 +97,12 @@ function App() {
     console.log("GeoJSON Data:", geojsonData);
   }
 
+  const legendItems = [
+    {color: '#12a4fd', label: 'one'},
+    {color: '#f1c232', label: 'two'},
+    {color: '#ec6060', label: 'three+'}
+  ]
+
   return (
     <div className="mx-auto text-left">
       <div className="ml-5 pb-3 md:w-lg">
@@ -106,6 +112,20 @@ function App() {
         </p>
         <p className="py-2"><i>And don’t forget Hawaii!</i></p>
         <p className="py-2">Data sourced from Pro Football Reference (2000–2023).</p>
+      </div>
+      <div>
+        Number of draftees
+        <div className="flex flex-wrap gap-4 mt-4">
+          {legendItems.map((item, index) => (
+            <div key={index} className="flex items-center">
+              <span
+                className="w-4 h-4 rounded-full mr-2"
+                style={{ backgroundColor: item.color }}
+              ></span>
+              <span className="text-sm">{item.label}</span>
+            </div>
+          ))}
+        </div>
       </div>
       <hr className="title-divider h-0.5 my-5 border-0 rounded-sm bg-white" />
       
