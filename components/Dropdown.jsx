@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 
 const Dropdown = ({ data = [], onSelect, title }) => {
   const [isOpen, setIsOpen] = useState(false);
+  // const [selectedItem, setSelectedItem] = useState(null);
   const dropdownRef = useRef(null);
 
   const listNames =
@@ -29,10 +30,11 @@ const Dropdown = ({ data = [], onSelect, title }) => {
       {/* Button to Toggle Dropdown */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
+        className="selectorBtn font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
         type="button"
       >
         {title}
+        {/* {selectedItem !== null ? selectedItem : title} */}
         <svg
           className="w-2.5 h-2.5 ms-3"
           aria-hidden="true"
@@ -52,7 +54,7 @@ const Dropdown = ({ data = [], onSelect, title }) => {
 
       {/* Dropdown Content */}
       {isOpen && (
-        <div className="dropdown-list absolute z-10 mt-2 divide-y divide-gray-100 rounded-lg shadow-md w-44 max-h-80 overflow-y-auto bg-gray-900">
+        <div className="dropList dropdown-list absolute z-10 mt-2 divide-y divide-gray-100 rounded-lg shadow-md w-44 max-h-80 overflow-y-auto">
           <ul className="py-2 text-sm">
             {listNames.length > 0 ? (
               listNames.map((item, index) => (
@@ -60,6 +62,7 @@ const Dropdown = ({ data = [], onSelect, title }) => {
                   <button
                     onClick={() => {
                       onSelect(item); // Send selected item to parent
+                      // setSelectedItem(item); // Send selected item to parent
                       setIsOpen(false); // Close dropdown
                     }}
                     className="list-item w-full text-left block px-4 py-2 hover:bg-gray-600"
