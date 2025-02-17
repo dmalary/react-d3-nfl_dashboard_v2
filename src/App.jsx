@@ -7,7 +7,7 @@ import Dropdown from "../components/Dropdown";
 import MapLayer from "../components/MapLayer";
 
 const supabase = createClient("https://vvlkqpqsfrexqrqcoiha.supabase.co", supaKey);
-const DEBUG = true; // Toggle this for debugging
+const DEBUG = false; // Toggle this for debugging
 
 function App() {
   const [error, setError] = useState(null);
@@ -165,7 +165,7 @@ function App() {
       </div>
 
       {/* Map Component */}
-      <div>
+      <div className="map-container">
         <MapLayer mapData={geojsonData} />
       </div>
     </div>

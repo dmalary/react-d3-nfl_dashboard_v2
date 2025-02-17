@@ -1,11 +1,13 @@
 /* eslint-disable react/prop-types */
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 import Map, {Source, Layer} from 'react-map-gl/mapbox';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 import { glKey } from '../config';
+
+import Tooltip from './Tooltip';
 
 const MapLayer = ({mapData}) => {
   const [viewState, setViewState] = useState({
@@ -14,10 +16,37 @@ const MapLayer = ({mapData}) => {
     zoom: 3.25
   });
 
+  console.log('mapData', mapData)
+
   // const positionCounts = mapData?.features.map(feature => feature.properties.position_count);
 
   // const minPositionCount = Math.min(...positionCounts);
   // const maxPositionCount = Math.max(...positionCounts);
+
+  const [tooltipInfo, setTooltipInfo] = useState(null);
+  const [cursor, setCursor] = useState('grab');
+
+  const handleHover = useCallback((event) => {
+    const { features, lngLat, point } = event;
+    if (features && features.length) {
+      const hoveredFeature = features[0].properties;
+
+      console.log('point', point)
+
+      setTooltipInfo({
+        x: point.x,
+        y: point.y,
+        longitude: lngLat.lng,
+        latitude: lngLat.lat,
+        // properties: features[0].properties
+        college: hoveredFeature.college || "Unknown College" 
+      });
+      setCursor('pointer'); // Change cursor on hover
+    } else {
+      setTooltipInfo(null);
+      setCursor('grab'); // Reset cursor when not hovering
+    }
+  }, []);
 
   const layerStyle = {
     id: 'point',
@@ -63,9 +92,13 @@ const MapLayer = ({mapData}) => {
         onMove={evt => setViewState(evt.viewState)}
         style={{width: 800, height: 600}}
         mapStyle="mapbox://styles/mapbox/dark-v11"
+        interactiveLayerIds={['point']} // Needed to enable feature picking
+        onMouseMove={handleHover} // Capture hover events
+        cursor={cursor} // Dynamically update cursor
       >
         <Source id="my-data" type="geojson" data={mapData}>
           <Layer {...layerStyle} />
+          {tooltipInfo && <Tooltip info={tooltipInfo} />}
         </Source>
       </Map>
     </div>
