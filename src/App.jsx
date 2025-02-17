@@ -105,7 +105,7 @@ function App() {
 
   return (
     <div className="mx-auto text-left">
-      <div className="ml-5 pb-3 md:w-lg">
+      <div className="ml-3 pb-3 md:w-lg">
         <h1 className="py-3">The NFL’s College Talent Pipeline</h1>
         <p className="py-2">
           With the NFL Draft approaching, explore which schools supply the most players at each position—both league-wide and for individual teams.
@@ -113,7 +113,7 @@ function App() {
         <p className="py-2"><i>And don’t forget Hawaii!</i></p>
         <p className="py-2">Data sourced from Pro Football Reference (2000–2023).</p>
       </div>
-      <div>
+      <div className="ml-3 pb-3 md:w-lg">
         Number of draftees
         <div className="flex flex-wrap gap-4 mt-4">
           {legendItems.map((item, index) => (
@@ -155,9 +155,9 @@ function App() {
           </button>
         </div>
 
-        <div className="mx-auto py-3">
-          {selectedTeam !== null ? <p>Team: {selectedTeam}</p> : <p>&nbsp;</p>}
-          {selectedPosition !== null ? <p>Position: {selectedPosition}</p> : <p>&nbsp;</p>}
+        <div className="mx-auto py-5">
+          {selectedTeam !== null ? <p>Selected team: <strong>{selectedTeam}</strong></p> : <p>&nbsp;</p>}
+          {selectedPosition !== null ? <p>Selected position: <strong>{selectedPosition}</strong></p> : <p>&nbsp;</p>}
         </div>
 
         {/* Error Message Display */}
