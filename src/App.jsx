@@ -138,7 +138,7 @@ function App() {
           <button
             className={`px-4 py-2 rounded-md text-white transition ${
               selectedTeam || selectedPosition
-                ? "bg-blue-500 hover:bg-blue-600"
+                ? "bg-emerald-500 hover:bg-emerald-600 cursor-pointer"
                 : "bg-gray-400 cursor-not-allowed"
             }`}
             onClick={getTeamData}
@@ -148,7 +148,7 @@ function App() {
           </button>
 
           <button
-            className="px-4 py-2 rounded-md bg-red-500 text-white hover:bg-red-600 transition"
+            className="px-4 py-2 rounded-md bg-transparent text-white underline decoration-red-400 transition cursor-pointer"
             onClick={resetFilters}
           >
             Reset
