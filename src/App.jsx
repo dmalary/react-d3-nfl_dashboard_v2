@@ -148,7 +148,7 @@ function App() {
           </button>
 
           <button
-            className="px-4 py-2 rounded-md bg-transparent text-white underline decoration-red-400 transition cursor-pointer"
+            className="px-4 py-2 rounded-md bg-transparent text-white hover:text-red-400 underline decoration-red-400 transition cursor-pointer"
             onClick={resetFilters}
           >
             Reset
